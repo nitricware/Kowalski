@@ -1,0 +1,20 @@
+{include ./system/view/default/html/header.html}
+
+<p><em>{$siteVars->introText}</em></p>
+{if $projects != false}
+	{loop $project in $projects}
+		{if $project.icon_path != false}
+			<img src="{$project.icon_path.ignoreContext()}" /><br />
+		{endif}
+			<h2>{$project.title}</h2>
+			<p>{$project.body}</p>
+				{if $project.download_type != false}
+					<a href="{$project.download_link.ignoreContext()}" target="_blank" id="download">Download</a>
+				{endif}
+	{endloop}
+{else}
+	<h2>No projects yet</h2>
+	<p>It seems as if {$siteVars->company} did not post any posts yet.</p>
+{endif}
+
+{include ./system/view/default/html/footer.html}

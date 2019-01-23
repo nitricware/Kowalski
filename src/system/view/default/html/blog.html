@@ -1,0 +1,16 @@
+{include ./system/view/default/html/header.html}
+
+<h1>Blog</h1>
+
+{if $posts != false}
+	{loop $post in $posts}
+		<h2><a href="blogpost.php?id={$post.id}">{$post.title}</a></h2>
+		<span>{$post.date}</span>
+		<p>{$post.stub.ignoreContext()} <a href="blogpost.php?id={$post.id}">Read more...</a></p>
+	{endloop}
+{else}
+	<h2>No posts yet</h2>
+	<p>It seems as if {$siteVars->company} did not post anything yet.</p>
+{endif}
+
+{include ./system/view/default/html/footer.html}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Kowalski &copy; Kurt Höblinger aka NitricWare</title>
+  <meta name="author" content="Kurt Höblinger">
+  <meta name="description" content="Kowalski (c) Kurt Höblinger aka NitricWare">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<!--
+		Kowalski (c) 2019 Kurt Höblinger aka NitricWare
+	-->
+	
+	<img src="{$siteVars->logoPath.ignoreContext()}" width="256" /><br />
+	<span id="name">{$siteVars->name}</span><br />
+	<span id="aka">aka</span><br />
+	<span id="company">{$siteVars->company}</span>
+	
+	<ul>
+		<li><a href="frontpage.php">Portfolio</a></li>
+		<li><a href="blog.php">Dev-Blog</a></li>
+		{if $siteVars->github != false}
+		<li><a href="https://www.github.com/{$siteVars->github}" target="_blank">GitHub</a></li>
+		{endif}
+		{if $pages != false}
+			{loop $page in $pages}
+				<li><a href="special.php?page={$page.id}">{$page.title}</a></li>
+			{endloop}
+		{endif}
+	</ul>
+	
+	{if $messages != false}
+	<ul>
+		{loop $message in $messages}
+		<li>{$message}</li>
+		{endloop}
+	</ul>
+	{endif}

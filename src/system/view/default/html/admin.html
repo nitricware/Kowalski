@@ -1,0 +1,17 @@
+{include ./system/view/default/html/header.html}
+
+<h1>Admin</h1>
+
+<h2>Upload New Content</h2>
+<form method="post" enctype="multipart/form-data" action="upload.php">
+	<select name="type">
+		<option value="post">Post</option>
+		<option value="page">Page</option>
+	</select>
+	<input type="text" name="release" placeholder="19.02.1990" />
+	<input type="file" name="file" />
+	<input type="password" name="password" placeholder="Password"/>
+	<button type="submit">Send</button>
+</form>
+
+{include ./system/view/default/html/footer.html}
