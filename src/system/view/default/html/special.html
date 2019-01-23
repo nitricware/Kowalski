@@ -1,0 +1,13 @@
+{include ./system/view/default/html/header.html}
+
+{if $special != false}
+	<article>
+		<h1>{$special.title}</h1>
+		{$special.body.ignoreContext()}
+	</article>
+{else}
+	<h2>Not Found</h2>
+	<p>The page you were trying to reach does not exist.</p>
+{endif}
+
+{include ./system/view/default/html/footer.html}

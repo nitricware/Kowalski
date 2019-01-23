@@ -1,0 +1,16 @@
+{include ./system/view/default/html/header.html}
+
+<h1>Blog</h1>
+
+{if $post != false}
+	<article>
+		<h2>{$post.title}</h2>
+		<span class="meta">{$post.date}</span>
+		<p>{$post.body.ignoreContext()}</p>
+	</article>
+{else}
+	<h2>Not Found</h2>
+	<p>The blogpost you were trying to reach does not exist.</p>
+{endif}
+
+{include ./system/view/default/html/footer.html}
