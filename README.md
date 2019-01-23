@@ -2,6 +2,10 @@
 
 Kowalski is a developer portfolio and dev-blog solution.
 
+## Customize
+
+Change variables in ```./src/system/siteVars.php```.
+
 ## Dependencies
 
 This project uses [Parsedown][1] and [Tonic][2]. Both are included with the download.
