@@ -24,6 +24,8 @@
 	if (file_exists($file)) {
 		$pp = new ParsePost($file);
 		$md = new Parsedown();
+		$md->setSafeMode(false);
+		$md->setMarkupEscaped(false);
 		$tpl->post = [
 			"title" => $pp->getPostTitle(),
 			"date" => $pp->getPostDate(),

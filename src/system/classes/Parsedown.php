@@ -481,8 +481,10 @@ class Parsedown
                 'element' => $Element,
             ),
         );
-
+		
         return $Block;
+        
+        
     }
 
     protected function blockFencedCodeContinue($Line, $Block)
@@ -516,6 +518,14 @@ class Parsedown
 
     protected function blockFencedCodeComplete($Block)
     {
+		// NitricWare edit: add syntax highlighting   
+	    // Creating a syntax highlighted fenced code block
+	    $geshi = new GeSHi($Block["element"]["element"]["text"], str_replace("language-", "", $Block["element"]["element"]["attributes"]["class"]));
+	    $geshi->set_header_type(GESHI_HEADER_DIV);
+	    $Block["element"]["element"]["text"] = $geshi->parse_code();
+	    $Block["element"]["element"]["name"] = "div";
+		$Block["element"]["element"]["attributes"]["class"] = "codeblock";
+	    $Block["element"] = $Block["element"]["element"];
         return $Block;
     }
 
@@ -1703,8 +1713,13 @@ class Parsedown
                 }
             }
         }
+        // NitricWare edit: allows raw HTML
 
-        $permitRawHtml = false;
+        if ($Element["attributes"]["class"] == "codeblock") {
+	        $permitRawHtml = true;
+	    } else {
+		    $permitRawHtml = false;
+	    }
 
         if (isset($Element['text']))
         {

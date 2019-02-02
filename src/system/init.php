@@ -7,6 +7,8 @@
 	include("./system/classes/ParseFile.php");
 	// Blog Post Parser
 	include("./system/classes/ParsePost.php");
+	// Syntax Highlighter
+	include("./system/classes/geshi.php");
 	// Site Variables
 	include("./system/siteVars.php");
 	$siteVars = new siteVars();

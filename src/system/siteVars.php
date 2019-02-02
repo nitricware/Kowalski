@@ -11,7 +11,7 @@
 		// Password (SHA1-Hash)
 		public $passHash = false;
 		// Design
-		public $design = "default";
+		public $design = "NW2019";
 		// Introduction Text
 		public $introText = "Describe yourself.";
 	}

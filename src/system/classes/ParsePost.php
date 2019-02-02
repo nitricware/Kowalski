@@ -38,7 +38,7 @@
 		}
 		
 		function getPostDate() {
-			$t = filemtime($this->path);
+			$t = pathinfo($this->path)["filename"];
 			$d = date("d.m.Y", $t);
 			$this->date = $d;
 			
@@ -47,5 +47,9 @@
 		
 		function getID() {
 			return pathinfo($this->path)["filename"];
+		}
+		
+		function replaceFencedCode($text) {
+			
 		}
 	}

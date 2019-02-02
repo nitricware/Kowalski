@@ -13,7 +13,7 @@
 	
 	// Get all projects for the frontpage
 	$blogDir = "./system/content/blog/";	
-	$blogFiles = scandir($blogDir);
+	$blogFiles = array_reverse(scandir($blogDir));
 	
 	if (count($blogFiles) > 2) {
 		foreach($blogFiles as $project) {

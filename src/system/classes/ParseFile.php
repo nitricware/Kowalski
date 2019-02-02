@@ -7,10 +7,12 @@
 		private $download_fetched = false;	// Is set to true once the download link was parsed to prevent double preg_match call
 		private $download_type;
 		private $download_link;
+		private $filename;
 		
 		function __construct(string $file) {
 			if (file_exists($file)) {
 				$this->file = file_get_contents($file);
+				$this->filename = pathinfo($file)["filename"];
 			}
 		}
 		
@@ -52,7 +54,7 @@
 		}
 		
 		function getProjectIcon() {
-			$iconPath = "./system/content/frontpage/".$this->title.".png";
+			$iconPath = "./system/content/frontpage/".$this->filename.".png";
 			if (file_exists($iconPath)) {
 				$this->icon = $iconPath;
 			} else {
