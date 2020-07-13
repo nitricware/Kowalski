@@ -1,5 +1,5 @@
 <?php
-	include("./system/init.php");
+	include("./init.php");
 	$error = 0;
 	
 	if ($_FILES["file"]["name"] == "") {

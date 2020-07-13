@@ -9,7 +9,7 @@
 	//
 	
 	// Include the init file.
-	include("./system/init.php");
+	include("./init.php");
 	
 	// Load the appropriate template
 	$tpl->load("./system/view/".$siteVars->design."/html/blogpost.html");

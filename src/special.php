@@ -7,7 +7,7 @@
 	// Started on 19 Jan 19
 	//
 	
-	include("./system/init.php");
+	include("./init.php");
 	
 	$tpl->load("./system/view/".$siteVars->design."/html/special.html");
 	

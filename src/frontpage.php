@@ -7,7 +7,7 @@
 	// Started on 19 Jan 19
 	//
 	
-	include("./system/init.php");
+	include("./init.php");
 	
 	// This page displays the frontpage
 	// It shows an overview over currently developed applications	

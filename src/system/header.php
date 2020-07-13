@@ -11,6 +11,8 @@
 		$pagesDir = "./system/content/pages/";	
 		$pagesFiles = scandir($pagesDir);
 		
+		$pages = false;
+		
 		if (count($pagesFiles) > 2) {
 			foreach($pagesFiles as $page) {
 				$completePath = $pagesDir.$page;
@@ -24,8 +26,7 @@
 					$pages[] = $page;
 				}
 			}
-		} else {
-			$pages = false;
 		}
+		
 		return $pages;
 	}
