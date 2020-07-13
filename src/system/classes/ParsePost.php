@@ -18,7 +18,7 @@
 			$hPos = strpos($this->file, "# ") + 2;
 			$lPos = strpos($this->file, "\n") - 2;
 			$this->title = substr($this->file, $hPos, $lPos);
-			
+
 			return $this->title;
 		}
 		

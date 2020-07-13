@@ -7,26 +7,24 @@
 	// Started on 19 Jan 19
 	//
 	function createHeaderItems() {
-		// Get all special pages
-		$pagesDir = "./system/content/pages/";	
-		$pagesFiles = scandir($pagesDir);
+		$files = new \NitricWare\KowalsikFiles();
+		$pages = $files->getPages();
 		
-		$pages = false;
+		$pageArray = array();
 		
-		if (count($pagesFiles) > 2) {
-			foreach($pagesFiles as $page) {
-				$completePath = $pagesDir.$page;
-				if (pathinfo($completePath)["extension"] == "md" && !strpos($completePath, "hidden_")) {
-					$pp = new ParsePost($completePath);
-					$page = [
+		if (count($pages) > 0) {
+			foreach($pages as $page) {
+				if (!strpos($page, "hidden_")) {
+					$pp = new ParsePost($page);
+					$pageInfo = [
 						"title" => $pp->getPostTitle(),
 						"id" => substr($page, 0, -3)
 					];
 					
-					$pages[] = $page;
+					$pageArray[] = $pageInfo;
 				}
 			}
 		}
 		
-		return $pages;
+		return $pageArray;
 	}
