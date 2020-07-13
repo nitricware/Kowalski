@@ -15,14 +15,14 @@
 <h2>Content</h2>
 <h3>Pages</h3>
 <ul>
-{loop $page in $pages}
+{loop $page in $pagesFiles}
 	<li>{$page}</li>
 {endloop}
 </ul>
 <h3>Blog Posts</h3>
 <ul>
 	{loop $blogPost in $blogPosts}
-	<li>{$blogPost}</li>
+	<li>{$blogPost} <a href="{$blogPost.ignoreContext()}">[show/download]</a> <a href="delete.php?file={$blogPost.ignoreContext()}">[delete]</a></li>
 	{endloop}
 </ul>
 <h3>Projects</h3>

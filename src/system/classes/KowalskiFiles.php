@@ -6,9 +6,8 @@
 	
 	class KowalsikFiles {
 		
-		private function getFiles(string $path = ".", string $extension = "md"): array {
+		private function getFiles(string $path = "./", string $extension = "md"): array {
 			$return = array();
-			$path = realpath($path)."/";
 			foreach (scandir($path) as $file) {
 				if ($file != ".." && $file != ".") {
 					$pathinfo = pathinfo($path.$file);
@@ -22,14 +21,14 @@
 		}
 		
 		public function getPages() {
-			return $this->getFiles("./system/content/pages");
+			return $this->getFiles("./system/content/pages/");
 		}
 		
 		public function getBlogPosts() {
-			return $this->getFiles("./system/content/blog");
+			return $this->getFiles("./system/content/blog/");
 		}
 		
 		public function getProjects() {
-			return $this->getFiles("./system/content/frontpage");
+			return $this->getFiles("./system/content/frontpage/");
 		}
 	}

@@ -16,7 +16,7 @@
 	
 	$adminPanel = new \NitricWare\KowalsikFiles();
 	
-	$tpl->assign("pages", $adminPanel->getPages());
+	$tpl->assign("pagesFiles", $adminPanel->getPages());
 	$tpl->assign("blogPosts", $adminPanel->getBlogPosts());
 	$tpl->assign("projects", $adminPanel->getProjects());
 	
