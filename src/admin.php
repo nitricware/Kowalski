@@ -9,6 +9,11 @@
 	
 	include("./init.php");
 	
+	if (!isset($_COOKIE["kowalski_admin"])) {
+		header("Location: admin_login.php");
+		exit();
+	}
+	
 	$tpl->load("./system/view/".$siteVars->design."/html/admin.html");
 	
 	echo $tpl->render();
