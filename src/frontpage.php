@@ -6,7 +6,6 @@
 	// by Kurt Höblinger aka NitricWare
 	// Started on 19 Jan 19
 	//
-	
 	include("./init.php");
 	
 	// This page displays the frontpage
