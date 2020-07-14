@@ -14,7 +14,7 @@
 	$siteVars = new siteVars();
 	// Include the template engine, use it and initiate it.
 	include("./system/classes/Tonic.php");
-	use Tonic as Tonic;
+	use NitricWare\Tonic as Tonic;
 	$tpl = new Tonic();
 	// Get the items for the header navigation bar
 	$pages = createHeaderItems();

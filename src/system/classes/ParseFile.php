@@ -26,8 +26,10 @@
 		
 		function getProjectBody() {
 			$sPos = strpos($this->file, "\n") + 1;
-			$lPos = strpos($this->file, "\n", $sPos + 1);
-			$this->body = substr($this->file, $sPos, $lPos - $sPos);
+			if (!$lPos = strpos($this->file, "\n", $sPos + 1)) {
+				$lPos = strlen($this->file);
+			}
+			$this->body = substr($this->file, $sPos, $lPos);
 			
 			return $this->body;
 		}
