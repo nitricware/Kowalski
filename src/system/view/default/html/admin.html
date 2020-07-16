@@ -10,8 +10,26 @@
 	</select>
 	<input type="text" name="release" placeholder="19.02.1990" />
 	<input type="file" name="file" />
-	<input type="password" name="password" placeholder="Password"/>
 	<button type="submit">Send</button>
 </form>
+<h2>Content</h2>
+<h3>Pages</h3>
+<ul>
+{loop $page in $pagesFiles}
+	<li>{$page}</li>
+{endloop}
+</ul>
+<h3>Blog Posts</h3>
+<ul>
+	{loop $blogPost in $blogPosts}
+	<li>{$blogPost} <a href="{$blogPost.ignoreContext()}">[show/download]</a> <a href="delete.php?file={$blogPost.ignoreContext()}">[delete]</a></li>
+	{endloop}
+</ul>
+<h3>Projects</h3>
+<ul>
+	{loop $project in $projects}
+	<li>{$project}</li>
+	{endloop}
+</ul>
 
 {include ./system/view/default/html/footer.html}

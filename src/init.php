@@ -11,6 +11,8 @@
 	include("./system/classes/ParsePost.php");
 	// Syntax Highlighter
 	include("./system/classes/geshi.php");
+	// Kowalski Files
+	include("./system/classes/KowalskiFiles.php");
 	// Site Variables
 	include("./system/siteVars.php");
 	$siteVars = new siteVars();
