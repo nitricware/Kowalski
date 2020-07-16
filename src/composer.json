@@ -1,5 +1,6 @@
 {
   "require": {
-    "nitricware/tonic": "^3.3.1"
+    "nitricware/tonic": "^3.3.1",
+    "geshi/geshi": "^1.0.9.1"
   }
 }
