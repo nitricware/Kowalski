@@ -1,4 +1,6 @@
 <?php
+	// Include the dependencies
+	include "vendor/autoload.php";
 	// Header Items Function
 	include("./system/header.php");
 	// Markdown parser
@@ -12,10 +14,9 @@
 	// Site Variables
 	include("./system/siteVars.php");
 	$siteVars = new siteVars();
-	// Include the template engine, use it and initiate it.
-	include("./system/classes/Tonic.php");
-	use NitricWare\Tonic as Tonic;
-	$tpl = new Tonic();
+	
+	$tpl = new \NitricWare\Tonic();
+	
 	// Get the items for the header navigation bar
 	$pages = createHeaderItems();
 	// Append the array of pages to the template

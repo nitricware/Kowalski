@@ -1,0 +1,5 @@
+{
+  "require": {
+    "nitricware/tonic": "^3.3.1"
+  }
+}
