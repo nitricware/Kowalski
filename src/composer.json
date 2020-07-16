@@ -1,6 +1,7 @@
 {
   "require": {
-    "nitricware/tonic": "^3.3.1",
-    "geshi/geshi": "^1.0.9.1"
+    "nitricware/tonic": "3.3.1",
+    "geshi/geshi": "1.0.9.1",
+    "erusev/parsedown": "1.8.0-beta7"
   }
 }

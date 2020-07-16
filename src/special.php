@@ -17,10 +17,10 @@
 	
 	if (file_exists($specialFile)) {
 		$pp = new ParsePost($specialFile);
-		$md = new Parsedown();
+		$md = new KowalskiSyntaxMarkdown();
 		$special = [
 			"title" => $pp->getPostTitle(),
-			"body" => $md->text($pp->getPostBody())
+			"body" => $md->parse($pp->getPostBody())
 		];
 	} else {
 		$special = false;

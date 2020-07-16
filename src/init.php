@@ -4,7 +4,8 @@
 	// Header Items Function
 	include("./system/header.php");
 	// Markdown parser
-	include("./system/classes/Parsedown.php");
+	//include("./system/classes/Parsedown.php");
+	include("./system/classes/ParsedownExtension.php");
 	// File Parser
 	include("./system/classes/ParseFile.php");
 	// Blog Post Parser
