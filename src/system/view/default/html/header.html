@@ -27,7 +27,7 @@
 		{endif}
 		{if $pages != false}
 			{loop $page in $pages}
-				<li><a href="special.php?page={$page.id}">{$page.title}</a></li>
+				<li><a href="special.php?page={$page.id.ignoreContext()}">{$page.title}</a></li>
 			{endloop}
 		{endif}
 	</ul>

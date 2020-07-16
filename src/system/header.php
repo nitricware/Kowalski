@@ -18,7 +18,7 @@
 					$pp = new ParsePost($page);
 					$pageInfo = [
 						"title" => $pp->getPostTitle(),
-						"id" => substr($page, 0, -3)
+						"id" => $pp->getID(),
 					];
 					
 					$pageArray[] = $pageInfo;
