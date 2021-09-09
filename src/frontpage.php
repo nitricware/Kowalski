@@ -1,11 +1,21 @@
 <?php
+	error_reporting(E_ALL);
 	//
 	//
-	// NW 2019
+	// Kowalski
 	//
 	// by Kurt Höblinger aka NitricWare
 	// Started on 19 Jan 19
 	//
+	
+	use NitricWare\KowalskiFiles;
+	use NitricWare\KowalskiProject;
+	use NitricWare\Tonic;
+	use NitricWare\ParseProject;
+	
+	/** @var Tonic $tpl */
+	/** @var siteVars $siteVars */
+	/** @var KowalskiFiles $files */
 	include("./init.php");
 	
 	// This page displays the frontpage
@@ -13,36 +23,31 @@
 	
 	$tpl->load("./system/view/".$siteVars->design."/html/frontpage.html");
 	
+	$tpl->pageType = "frontpage";
+	
 	// Get all projects for the frontpage
 	$projectsDir = "./system/content/frontpage/";	
-	$projectsFiles = scandir($projectsDir);
+	$projectsFiles = $files->getProjects();
 	
-	// There are always 2 entries in the array: "." and ".."
-	// We assume there are valid projects files when there are more than 2 entries
-	// TODO: Check for valid project files
-	//
-	// Then create an array holding all information about the single projects and append it to the template
+	$projects = [];
 	
-	if (count($projectsFiles) > 2) {
-		foreach($projectsFiles as $project) {
-			$completePath = $projectsDir.$project;
-			if (pathinfo($completePath)["extension"] == "md") {
-				$pp = new ParseProject($completePath);
-				$project = [
-					"title" => $pp->getProjectTitle(),
-					"body" => $pp->getProjectBody(),
-					"icon_path" => $pp->getProjectIcon(),
-					"download_type" => $pp->getDownload()["type"],
-					"download_link" => $pp->getDownload()["link"]
-				];
-				
-				$projects[] = $project;
-			}
+	foreach ($projectsFiles as $projectFile) {
+		try {
+			$projects[] = new KowalskiProject($projectFile);
+		} catch (Exception $e) {
+			echo ("Error: ".$e->getMessage());
 		}
-	} else {
+	}
+	
+	if (count($projects) < 1) {
 		$projects = false;
 	}
+	
 	$tpl->projects = $projects;
 	
 	// Render the template
-	echo $tpl->render();
+	try {
+		echo $tpl->render();
+	} catch (Exception $e) {
+		die ("Error rendering template.");
+	}

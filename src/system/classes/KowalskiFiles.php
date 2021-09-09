@@ -1,13 +1,27 @@
 <?php
 	
-	
 	namespace NitricWare;
 	
-	
-	class KowalsikFiles {
+	/**
+	 * Class KowalskiFiles
+	 *
+	 * Scans the selected location for valid files
+	 *
+	 * @package NitricWare
+	 */
+	class KowalskiFiles {
 		
-		private function getFiles(string $path = "./", string $extension = "md"): array {
-			$return = array();
+		/**
+		 * @param string $path
+		 * @param string $extension
+		 *
+		 * @return array
+		 */
+		private function getFiles(
+			string $path = "./",
+			string $extension = "md"
+		): array {
+			$return = [];
 			foreach (scandir($path) as $file) {
 				if ($file != ".." && $file != ".") {
 					$pathinfo = pathinfo($path.$file);
@@ -20,15 +34,30 @@
 			return $return;
 		}
 		
-		public function getPages() {
+		/**
+		 * Gets all pages.
+		 *
+		 * @return array
+		 */
+		public function getPages(): array {
 			return $this->getFiles("./system/content/pages/");
 		}
 		
-		public function getBlogPosts() {
+		/**
+		 * Gets all blog posts.
+		 *
+		 * @return array
+		 */
+		public function getBlogPosts(): array {
 			return $this->getFiles("./system/content/blog/");
 		}
 		
-		public function getProjects() {
+		/**
+		 * Gets all projects.
+		 *
+		 * @return array
+		 */
+		public function getProjects(): array {
 			return $this->getFiles("./system/content/frontpage/");
 		}
 	}

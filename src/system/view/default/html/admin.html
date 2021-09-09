@@ -16,7 +16,7 @@
 <h3>Pages</h3>
 <ul>
 {loop $page in $pagesFiles}
-	<li>{$page}</li>
+	<li>{$page} <a href="{$page.ignoreContext()}">[show/download]</a> <a href="delete.php?file={$page.ignoreContext()}">[delete]</a></li>
 {endloop}
 </ul>
 <h3>Blog Posts</h3>
@@ -28,7 +28,7 @@
 <h3>Projects</h3>
 <ul>
 	{loop $project in $projects}
-	<li>{$project}</li>
+	<li>{$project} <a href="{$project.ignoreContext()}">[show/download]</a> <a href="delete.php?file={$project.ignoreContext()}">[delete]</a></li>
 	{endloop}
 </ul>
 

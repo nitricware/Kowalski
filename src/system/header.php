@@ -6,8 +6,12 @@
 	// by Kurt Höblinger aka NitricWare
 	// Started on 19 Jan 19
 	//
+	
+	use NitricWare\KowalskiFiles;
+	use NitricWare\ParsePost;
+	
 	function createHeaderItems() {
-		$files = new \NitricWare\KowalsikFiles();
+		$files = new KowalskiFiles();
 		$pages = $files->getPages();
 		
 		$pageArray = array();

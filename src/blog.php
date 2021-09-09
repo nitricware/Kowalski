@@ -6,8 +6,15 @@
 	// by Kurt Höblinger aka NitricWare
 	// Started on 19 Jan 19
 	//
+	use NitricWare\ParsePost;
+	use NitricWare\Tonic;
+	
+	
+	/** @var siteVars $siteVars */
+	/** @var Tonic $tpl */
 	
 	include("./init.php");
+	
 	
 	$tpl->load("./system/view/".$siteVars->design."/html/blog.html");
 	

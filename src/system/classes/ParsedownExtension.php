@@ -1,7 +1,13 @@
 <?php
+	
+	/**
+	 * Class KowalskiSyntaxMarkdown
+	 *
+	 * Extension for Parsedown that combines GeSHi with
+	 * Parsedown.
+	 */
 	class KowalskiSyntaxMarkdown extends Parsedown {
-		protected function blockFencedCodeComplete($Block)
-		{
+		protected function blockFencedCodeComplete($Block) {
 			// Creating a syntax highlighted fenced code block
 			$geshi = new GeSHi(
 				$Block["element"]["element"]["text"],

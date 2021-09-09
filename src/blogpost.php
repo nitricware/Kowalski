@@ -8,7 +8,12 @@
 	//
 	//
 	
-	// Include the init file.
+	use NitricWare\ParsePost;
+	use NitricWare\Tonic;
+	
+	
+	/** @var siteVars $siteVars */
+	/** @var Tonic $tpl */
 	include("./init.php");
 	
 	// Load the appropriate template

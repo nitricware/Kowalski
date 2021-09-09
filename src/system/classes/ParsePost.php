@@ -1,55 +1,81 @@
 <?php
+	
+	namespace NitricWare;
+	
+	/**
+	 * Class ParsePost
+	 *
+	 * Parses a blog post file.
+	 *
+	 * @package NitricWare
+	 */
 	class ParsePost {
-		private $path;
-		private $file;
-		private $title;
-		private $body;
-		private $stub;
-		private $date;
+		private string $path;
 		
-		function __construct(string $file) {
+		function __construct(
+			private string $file
+		) {
 			if (file_exists($file)) {
 				$this->file = file_get_contents($file);
 				$this->path = $file;
 			}
 		}
 		
-		function getPostTitle() {
+		/**
+		 * Scans for the first headline and returns it as
+		 * the post title.
+		 *
+		 * @return string
+		 */
+		function getPostTitle(): string {
 			$hPos = strpos($this->file, "# ") + 2;
 			$lPos = strpos($this->file, "\n") - 2;
-			$this->title = substr($this->file, $hPos, $lPos);
-
-			return $this->title;
+			return substr($this->file, $hPos, $lPos);
 		}
 		
-		function getPostBody() {
+		/**
+		 * Scans for text after the first line break and
+		 * returns the rest of the file as the body,
+		 * including links.
+		 *
+		 * @return false|string
+		 */
+		function getPostBody(): false|string {
 			$sPos = strpos($this->file, "\n") + 1;
-			$this->body = substr($this->file, $sPos);
-			
-			return $this->body;
+			return substr($this->file, $sPos);
 		}
 		
+		/**
+		 * Returns the text between the first and the second
+		 * line break as a stub of the blog post.
+		 *
+		 * @return false|string
+		 */
 		function getPostStub() {
-			$s = strpos($this->file, "\n") + 2;
-			$e = strpos($this->file, "\n", strpos($this->file, "\n") + 4);
-			$this->stub = substr($this->file, $s, $e - $s);
-			
-			return $this->stub;
+			$firstLineBreak = strpos($this->file, "\n") + 2;
+			$secondLineBreak = strpos($this->file, "\n", $firstLineBreak);
+			return substr($this->file, $firstLineBreak, $secondLineBreak - $firstLineBreak);
 		}
 		
-		function getPostDate() {
+		/**
+		 * The date of the post is stored in the file name.
+		 * Parses the filename and returns a date.
+		 *
+		 * TODO: localize date output
+		 *
+		 * @return false|string
+		 */
+		function getPostDate(): bool|string {
 			$t = pathinfo($this->path)["filename"];
-			$d = date("d.m.Y", $t);
-			$this->date = $d;
-			
-			return $this->date;
+			return date("d.m.Y", $t);
 		}
 		
-		function getID() {
+		/**
+		 * Returns the filename as the blog post ID.
+		 *
+		 * @return string
+		 */
+		function getID(): string {
 			return pathinfo($this->path)["filename"];
-		}
-		
-		function replaceFencedCode($text) {
-			
 		}
 	}

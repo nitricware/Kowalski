@@ -7,6 +7,8 @@
 	// Started on 19 Jan 19
 	//
 	
+	use NitricWare\KowalskiFiles;
+	
 	include("./init.php");
 	
 	if (!isset($_COOKIE["kowalski_admin"])) {
@@ -14,7 +16,7 @@
 		exit();
 	}
 	
-	$adminPanel = new \NitricWare\KowalsikFiles();
+	$adminPanel = new KowalskiFiles();
 	
 	$tpl->assign("pagesFiles", $adminPanel->getPages());
 	$tpl->assign("blogPosts", $adminPanel->getBlogPosts());

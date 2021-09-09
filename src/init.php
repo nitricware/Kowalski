@@ -1,22 +1,28 @@
 <?php
 	// Include the dependencies
+	use NitricWare\KowalskiFiles;
+	use NitricWare\Tonic;
+	
 	include "vendor/autoload.php";
-	// Header Items Function
-	include("./system/header.php");
 	// Markdown parser
 	//include("./system/classes/Parsedown.php");
 	include("./system/classes/ParsedownExtension.php");
 	// File Parser
-	include("./system/classes/ParseFile.php");
+	include("./system/classes/ParseProjects.php");
+	include("./system/classes/KowalskiProject.php");
 	// Blog Post Parser
 	include("./system/classes/ParsePost.php");
 	// Kowalski Files
 	include("./system/classes/KowalskiFiles.php");
 	// Site Variables
 	include("./system/siteVars.php");
+	// Header Items Function
+	include("./system/header.php");
+	
 	$siteVars = new siteVars();
 	
-	$tpl = new \NitricWare\Tonic();
+	$tpl = new Tonic();
+	$files = new KowalskiFiles();
 	
 	// Get the items for the header navigation bar
 	$pages = createHeaderItems();

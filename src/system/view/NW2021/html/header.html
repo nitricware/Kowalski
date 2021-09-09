@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>NitricWare</title>
+  <meta name="author" content="Kurt Höblinger">
+  <meta name="description" content="The official page of the developer Kurt Höblinger aka NitricWare">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,900;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+	<link href="./system/view/NW2021/css/css2.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="header">
+		<img src="{$siteVars->logoPath.ignoreContext()}" />
+		<div class="developerName">
+			<div id="name">{$siteVars->name} </div>
+			<div id="aka">aka </div>
+			<div id="company">{$siteVars->company}</div>
+		</div>
+	</div>
+
+	<div class="navigation">
+		<div class="item left"><a href="frontpage.php">/* Portfolio */</a></div>
+		<div class="item left"><a href="blog.php">/* Dev-Blog */</a></div>
+		{if $siteVars->github != false}
+		<div class="item left"><a href="https://www.github.com/{$siteVars->github}" target="_blank">/* GitHub */</a></div>
+		{endif}
+		{if $pages != false}
+		{loop $page in $pages}
+		<div class="item left"><a href="special.php?page={$page.id}">/* {$page.title} */</a></div>
+		{endloop}
+		{endif}
+	</div>
+	{if $pageType == "frontpage"}
+	<div class="bigText">
+		<div>
+			{$siteVars->introText}
+		</div>
+	</div>
+	{endif}
+
+	{if $messages != false}
+	<div class="messageContainer">
+		{loop $message in $messages}
+		<p class="blockquote">{$message}</p>
+		{endloop}
+	</div>
+	{endif}

@@ -1,4 +1,9 @@
 <?php
+	/** @var siteVars $siteVars */
+	/** @var Tonic $tpl */
+	
+	use NitricWare\Tonic;
+	
 	require "init.php";
 	
 	if (isset($_POST["password"])) {
