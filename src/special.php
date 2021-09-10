@@ -6,9 +6,9 @@
 	// by Kurt Höblinger aka NitricWare
 	// Started on 19 Jan 19
 	//
-	use NitricWare\ParsePost;
-	use NitricWare\Tonic;
 	
+	use NitricWare\KowalskiPost;
+	use NitricWare\Tonic;
 	
 	/** @var siteVars $siteVars */
 	/** @var Tonic $tpl */
@@ -20,17 +20,22 @@
 	$specialDir = "./system/content/pages/";
 	$specialFile = $specialDir.$_GET["page"].".md";
 	
-	if (file_exists($specialFile)) {
-		$pp = new ParsePost($specialFile);
+	try {
+		$pp = new KowalskiPost($specialFile);
 		$md = new KowalskiSyntaxMarkdown();
 		$special = [
 			"title" => $pp->getPostTitle(),
 			"body" => $md->parse($pp->getPostBody())
 		];
-	} else {
+	} catch (Exception $e) {
 		$special = false;
 	}
-	$tpl->special = $special;
+	
+	$tpl->assign("special", $special);
 	
 	// Render the template
-	echo $tpl->render();
+	try {
+		echo $tpl->render();
+	} catch (Exception $e) {
+		die("Error displaying special page.");
+	}

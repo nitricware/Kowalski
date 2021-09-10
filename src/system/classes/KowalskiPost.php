@@ -2,22 +2,29 @@
 	
 	namespace NitricWare;
 	
+	use Exception;
+	
 	/**
-	 * Class ParsePost
+	 * Class KowalskiPost
 	 *
 	 * Parses a blog post file.
 	 *
 	 * @package NitricWare
 	 */
-	class ParsePost {
+	class KowalskiPost {
 		private string $path;
 		
+		/**
+		 * @throws Exception
+		 */
 		function __construct(
 			private string $file
 		) {
 			if (file_exists($file)) {
 				$this->file = file_get_contents($file);
 				$this->path = $file;
+			} else {
+				throw new Exception("File does not exist.");
 			}
 		}
 		

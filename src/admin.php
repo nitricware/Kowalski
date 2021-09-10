@@ -8,7 +8,11 @@
 	//
 	
 	use NitricWare\KowalskiFiles;
+	use NitricWare\Tonic;
 	
+	/** @var Tonic $tpl */
+	/** @var siteVars $siteVars */
+	/** @var KowalskiFiles $files */
 	include("./init.php");
 	
 	if (!isset($_COOKIE["kowalski_admin"])) {
@@ -24,4 +28,8 @@
 	
 	$tpl->load("./system/view/".$siteVars->design."/html/admin.html");
 	
-	echo $tpl->render();
+	try {
+		echo $tpl->render();
+	} catch (Exception $e) {
+		die("Error: ".$e->getMessage());
+	}

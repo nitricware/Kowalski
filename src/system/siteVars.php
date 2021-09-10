@@ -1,4 +1,8 @@
 <?php
+	
+	/**
+	 *
+	 */
 	class siteVars {
 		// Developer Name
 		public $name = "Kurt Höblinger";

@@ -11,7 +11,7 @@
 	use NitricWare\KowalskiFiles;
 	use NitricWare\KowalskiProject;
 	use NitricWare\Tonic;
-	use NitricWare\ParseProject;
+	// use NitricWare\ParseProject;
 	
 	/** @var Tonic $tpl */
 	/** @var siteVars $siteVars */
@@ -23,7 +23,7 @@
 	
 	$tpl->load("./system/view/".$siteVars->design."/html/frontpage.html");
 	
-	$tpl->pageType = "frontpage";
+	$tpl->assign("pageType", "frontpage");
 	
 	// Get all projects for the frontpage
 	$projectsDir = "./system/content/frontpage/";	
@@ -43,7 +43,7 @@
 		$projects = false;
 	}
 	
-	$tpl->projects = $projects;
+	$tpl->assign("projects", $projects);
 	
 	// Render the template
 	try {

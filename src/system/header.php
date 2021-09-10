@@ -8,9 +8,9 @@
 	//
 	
 	use NitricWare\KowalskiFiles;
-	use NitricWare\ParsePost;
+	use NitricWare\KowalskiPost;
 	
-	function createHeaderItems() {
+	function createHeaderItems(): array {
 		$files = new KowalskiFiles();
 		$pages = $files->getPages();
 		
@@ -19,7 +19,7 @@
 		if (count($pages) > 0) {
 			foreach($pages as $page) {
 				if (!strpos($page, "hidden_")) {
-					$pp = new ParsePost($page);
+					$pp = new KowalskiPost($page);
 					$pageInfo = [
 						"title" => $pp->getPostTitle(),
 						"id" => $pp->getID(),

@@ -5,13 +5,12 @@
 	
 	include "vendor/autoload.php";
 	// Markdown parser
-	//include("./system/classes/Parsedown.php");
 	include("./system/classes/ParsedownExtension.php");
 	// File Parser
-	include("./system/classes/ParseProjects.php");
+	//include("./system/classes/ParseProjects.php");
 	include("./system/classes/KowalskiProject.php");
 	// Blog Post Parser
-	include("./system/classes/ParsePost.php");
+	include("./system/classes/KowalskiPost.php");
 	// Kowalski Files
 	include("./system/classes/KowalskiFiles.php");
 	// Site Variables
@@ -27,14 +26,14 @@
 	// Get the items for the header navigation bar
 	$pages = createHeaderItems();
 	// Append the array of pages to the template
-	$tpl->pages = $pages;
+	$tpl->assign("pages", $pages);
 	
 	// Read single parts of the date and time
 	$day = date("d");
 	$month = date("m");
 	$minute = date("i");
 	
-	// Initate the messages array which holds the messages displayed right after the navigation bar
+	// Initiate the messages array which holds the messages displayed right after the navigation bar
 	$messages = [];
 	
 	// Check if the date is fitting for a message
@@ -44,17 +43,16 @@
 		$messages[] = "Happy Halloween! 🎃";	
 	}
 	
-	
 	// If the messages array is empty, assign it with boolean false
 	if (count($messages) == 0) {
 		$messages = false;
 	}
 	
 	// Append messages and date parts to the template object.
-	$tpl->messages = $messages;
-	$tpl->day = $day;
-	$tpl->month = $month;
-	$tpl->minute = $minute;
+	$tpl->assign("messages", $messages);
+	$tpl->assign("day", $day);
+	$tpl->assign("month", $month);
+	$tpl->assign("minute", $minute);
 	
 	// Append the site vars to the template
-	$tpl->siteVars = $siteVars;
+	$tpl->assign("siteVars", $siteVars);

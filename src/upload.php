@@ -1,4 +1,5 @@
 <?php
+	/** @var siteVars $siteVars */
 	include("./init.php");
 	$error = 0;
 	
