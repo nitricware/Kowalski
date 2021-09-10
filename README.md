@@ -15,7 +15,7 @@ The .gitignore files in the content folder are made for easy testing. Whatever y
 
 ## Dependencies
 
-This project uses a modified version of [Parsedown][1] (added syntax highlighting) and the vanilla version of [Tonic][2] and [GeSHi][3]. All three are included with the download.
+This project uses a modified version of [Parsedown][1] (added syntax highlighting) and the vanilla version of [Tonic][2] and [GeSHi][3]. None are included with the download and must be downloaded with `composer`.
 
 ## Changelog
 
