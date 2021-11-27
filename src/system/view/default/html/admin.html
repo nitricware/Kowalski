@@ -16,20 +16,23 @@
 <h3>Pages</h3>
 <ul>
 {loop $page in $pagesFiles}
-	<li>{$page} <a href="{$page.ignoreContext()}">[show/download]</a> <a href="delete.php?file={$page.ignoreContext()}">[delete]</a></li>
+	<li>{$page} <a href="{$page.ignoreContext()}">[show/download]</a> <a href="delete.php?file={$page.ignoreContext()}">[delete]</a> <a href="admin_editor.php?action=edit&amp;type=pages&amp;file={$page.ignoreContext()}">[edit]</a></li>
 {endloop}
+	<li><a href="admin_editor.php?action=new&amp;type=pages">[Add new]</a></li>
 </ul>
 <h3>Blog Posts</h3>
 <ul>
 	{loop $blogPost in $blogPosts}
-	<li>{$blogPost} <a href="{$blogPost.ignoreContext()}">[show/download]</a> <a href="delete.php?file={$blogPost.ignoreContext()}">[delete]</a></li>
+	<li>{$blogPost} <a href="{$blogPost.ignoreContext()}">[show/download]</a> <a href="delete.php?file={$blogPost.ignoreContext()}">[delete]</a> <a href="admin_editor.php?action=edit&amp;type=blog&amp;file={$blogPost.ignoreContext()}">[edit]</a></li>
 	{endloop}
+	<li><a href="admin_editor.php?action=new&amp;type=blog">[Add new]</a></li>
 </ul>
 <h3>Projects</h3>
 <ul>
 	{loop $project in $projects}
-	<li>{$project} <a href="{$project.ignoreContext()}">[show/download]</a> <a href="delete.php?file={$project.ignoreContext()}">[delete]</a></li>
+	<li>{$project} <a href="{$project.ignoreContext()}">[show/download]</a> <a href="delete.php?file={$project.ignoreContext()}">[delete]</a> <a href="admin_editor.php?action=edit&amp;type=frontpage&amp;file={$project.ignoreContext()}">[edit]</a></li>
 	{endloop}
+	<li><a href="admin_editor.php?action=new&amp;type=frontpage">[Add new]</a></li>
 </ul>
 
 {include ./system/view/default/html/footer.html}

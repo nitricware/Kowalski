@@ -47,10 +47,13 @@
 		
 		private function parseDescription (): void {
 			$firstLineBreak = strpos($this->projectFile, "\n") + 2;
-			if (!$secondLineBreak = strpos($this->projectFile, "\n", $firstLineBreak)) {
+			$secondLineBreak = strpos($this->projectFile, "\n", $firstLineBreak);
+			if ($firstLineBreak == $secondLineBreak) {
+				$secondLineBreak = strpos($this->projectFile, "\r", $firstLineBreak);
+			}
+			if (!$secondLineBreak) {
 				$secondLineBreak = strlen($this->projectFile);
 			}
-			
 			$this->description = substr(
 				$this->projectFile,
 				$firstLineBreak,

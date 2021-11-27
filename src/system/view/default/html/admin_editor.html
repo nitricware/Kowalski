@@ -1,0 +1,14 @@
+{include ./system/view/default/html/header.html}
+
+<h1>Editor</h1>
+<h2>{$editor->contentType}: {if $editor->fileURL}{$editor->fileURL}{else}new file{endif}</h2>
+
+<form method="post" action="admin_editor.php?action=save&amp;type={$editor->contentType}{if $editor->fileURL}&amp;file={$editor->fileURL.ignoreContext()}{endif}">
+    <label>
+        <textarea rows="20" cols="100" name="content">{if $editor->content}{$editor->content}{endif}</textarea>
+    </label>
+    <br />
+    <button type="submit">Save</button>
+</form>
+
+{include ./system/view/default/html/footer.html}

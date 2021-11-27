@@ -17,10 +17,15 @@ The .gitignore files in the content folder are made for easy testing. Whatever y
 
 This project uses a modified version of [Parsedown][1] (added syntax highlighting) and the vanilla version of [Tonic][2] and [GeSHi][3]. None are included with the download and must be downloaded with `composer`.
 
+## Publish
+
+There are two ways to publish projects, blog posts and pages. Either upload a .md file or use the built-in editor.
+
 ## Changelog
 
 1. 23.1.2019 - initial release
 2. 2.2.2019 - added syntax highlighting to the blog feature
+3. 16.11.2021 - added editor to admin panel
 
 [1]: https://github.com/erusev/parsedown
 [2]: https://github.com/rgamba/Tonic

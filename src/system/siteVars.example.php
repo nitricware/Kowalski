@@ -39,4 +39,9 @@
 		 * @var string
 		 */
 		public string $introText = "Describe yourself.";
+		/**
+		 * Show link to admin interface if theme supports it?
+		 * @var bool
+		 */
+		public bool $linkToAdmin = true;
 	}
