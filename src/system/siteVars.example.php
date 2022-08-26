@@ -44,4 +44,11 @@
 		 * @var bool
 		 */
 		public bool $linkToAdmin = true;
+		/**
+		 * Use GeSHi's class system for highlight or color in HTML?
+		 * Set to true for classes. Requires extra CSS.
+		 * @var bool
+		 */
 	}
+	
+	const GESHI_CLASSES = true;

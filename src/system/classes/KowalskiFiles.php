@@ -2,6 +2,8 @@
 	
 	namespace NitricWare;
 	
+	use KowalskiContentTypes;
+	
 	/**
 	 * Class KowalskiFiles
 	 *
@@ -39,7 +41,7 @@
 		 *
 		 * @return array
 		 */
-		public function getPages(): array {
+		private function getPages(): array {
 			return $this->getFiles("./system/content/pages/");
 		}
 		
@@ -48,7 +50,7 @@
 		 *
 		 * @return array
 		 */
-		public function getBlogPosts(): array {
+		private function getBlogPosts(): array {
 			return $this->getFiles("./system/content/blog/");
 		}
 		
@@ -57,7 +59,22 @@
 		 *
 		 * @return array
 		 */
-		public function getProjects(): array {
+		private function getProjects(): array {
 			return $this->getFiles("./system/content/frontpage/");
 		}
+		
+		/**
+		 * @param KowalskiContentTypes $type
+		 *
+		 * @return ?array
+		 */
+		public function get(KowalskiContentTypes $type): ?array {
+			return match ($type) {
+				KowalskiContentTypes::page => $this->getPages(),
+				KowalskiContentTypes::blog => $this->getBlogPosts(),
+				KowalskiContentTypes::project => $this->getProjects(),
+			};
+		}
 	}
+	
+	

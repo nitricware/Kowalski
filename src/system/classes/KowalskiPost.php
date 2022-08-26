@@ -56,9 +56,9 @@
 		 * Returns the text between the first and the second
 		 * line break as a stub of the blog post.
 		 *
-		 * @return false|string
+		 * @return string
 		 */
-		function getPostStub() {
+		function getPostStub(): string {
 			$firstLineBreak = strpos($this->file, "\n") + 2;
 			$secondLineBreak = strpos($this->file, "\n", $firstLineBreak);
 			return substr($this->file, $firstLineBreak, $secondLineBreak - $firstLineBreak);

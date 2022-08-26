@@ -18,6 +18,7 @@
 				)
 			);
 			$geshi->set_header_type(GESHI_HEADER_DIV);
+			$geshi->enable_classes(GESHI_CLASSES);
 			$Block["element"]["element"]["name"] = "div";
 			$Block["element"]["element"]["attributes"]["class"] = "codeblock";
 			$Block["element"] = $Block["element"]["element"];

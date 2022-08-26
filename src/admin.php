@@ -22,9 +22,9 @@
 	
 	$adminPanel = new KowalskiFiles();
 	
-	$tpl->assign("pagesFiles", $adminPanel->getPages());
-	$tpl->assign("blogPosts", $adminPanel->getBlogPosts());
-	$tpl->assign("projects", $adminPanel->getProjects());
+	$tpl->assign("pagesFiles", $adminPanel->get(KowalskiContentTypes::page));
+	$tpl->assign("blogPosts", $adminPanel->get(KowalskiContentTypes::blog));
+	$tpl->assign("projects", $adminPanel->get(KowalskiContentTypes::project));
 	
 	$tpl->load("./system/view/".$siteVars->design."/html/admin.html");
 	

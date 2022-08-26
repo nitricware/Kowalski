@@ -4,6 +4,8 @@
 	use NitricWare\Tonic;
 	
 	include "vendor/autoload.php";
+	// Kowalski Content Types
+	include("./system/enums/KowalskiContentTypes.php");
 	// Markdown parser
 	include("./system/classes/ParsedownExtension.php");
 	// File Parser

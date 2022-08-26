@@ -27,7 +27,7 @@
 	// Create an array holding the blog post (or false if the file does not exist)
 	try {
 		$pp = new KowalskiPost($file);
-		$md = new Parsedown();
+		$md = new KowalskiSyntaxMarkdown();
 		$md->setSafeMode(false);
 		$md->setMarkupEscaped(false);
 		$tpl->assign(

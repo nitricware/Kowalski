@@ -27,7 +27,7 @@
 	
 	// Get all projects for the frontpage
 	$projectsDir = "./system/content/frontpage/";	
-	$projectsFiles = $files->getProjects();
+	$projectsFiles = $files->get(KowalskiContentTypes::project);
 	
 	$projects = [];
 	

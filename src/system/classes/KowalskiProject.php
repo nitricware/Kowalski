@@ -7,11 +7,11 @@
 	use Exception;
 	
 	class KowalskiProject {
-		public string $title = "";
-		public string $description = "";
+		public ?string $title = null;
+		public ?string $description = null;
 		/** @var KowalskiProjectDownloadLinks[] $downloadLinks */
 		public array $downloadLinks = [];
-		public string|bool $iconPath = false;
+		public ?string $iconPath = null;
 		
 		private string $projectFile = "";
 		
@@ -62,7 +62,7 @@
 		}
 		
 		private function parseDownloadLinks (): void {
-			$pattern = '/\[(github|appstore)\]\:\ (https?:\/\/[www\.]?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b[-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/m';
+			$pattern = '/\[(github|appstore)]: (https?:\/\/[(?:w)3.]?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b[-a-zA-Z0-9@:%_+.~#?&\/=]*)/m';
 			preg_match_all($pattern, $this->projectFile, $result);
 			
 			for ($i = 0; $i < count($result[0]); $i++) {

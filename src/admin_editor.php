@@ -21,7 +21,7 @@
 	
 	$accidentialCall = false;
 	
-	// TODO: create externally
+	
 	class KowalskiEditorData {
 		public ?string $contentType = null;
 		public ?string $content = null;
@@ -29,12 +29,6 @@
 	}
 	
 	$editor = new KowalskiEditorData();
-	
-	$adminPanel = new KowalskiFiles();
-	
-	$tpl->assign("pagesFiles", $adminPanel->getPages());
-	$tpl->assign("blogPosts", $adminPanel->getBlogPosts());
-	$tpl->assign("projects", $adminPanel->getProjects());
 	
 	$tpl->load("./system/view/".$siteVars->design."/html/admin_editor.html");
 	
