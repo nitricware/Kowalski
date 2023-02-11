@@ -4,3 +4,4 @@ composer.lock
 src/system/siteVars.php
 src/system/view/NW2019
 src/system/view/NW2021
+src/system/frontpageMessages.php

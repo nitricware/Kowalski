@@ -32,6 +32,9 @@
 				<li><a href="special.php?page={$page.id.ignoreContext()}">{$page.title}</a></li>
 			{endloop}
 		{endif}
+		{if $siteVars->linkToAdmin}
+		<li><a href="admin.php">Admin</a></li>
+		{endif}
 	</ul>
 	
 	{if $messages != false}

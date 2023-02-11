@@ -3,6 +3,8 @@
 	 * Autoloader
 	 */
 	
+	use NitricWare\KowalskiFrontpageMessages;
+	
 	include __DIR__."/vendor/autoload.php";
 	/**
 	 * NWAutoLoad - automatically includes used classes, enums, etc.
@@ -27,10 +29,11 @@
 	
 	// Site Variables
 	include("./system/siteVars.php");
+	/** @var KowalskiFrontpageMessages[] $frontpageMessages */
+	include("./system/frontpageMessages.php");
+	$siteVars = new siteVars();
 	// Header Items Function
 	include("./system/header.php");
-	
-	$siteVars = new siteVars();
 	
 	$tpl = new NitricWare\Tonic();
 	$files = new NitricWare\KowalskiFiles();
@@ -46,13 +49,13 @@
 	$minute = date("i");
 	
 	// Initiate the messages array which holds the messages displayed right after the navigation bar
+	$now = new DateTimeImmutable();
 	$messages = [];
-	
-	// Check if the date is fitting for a message
-	if (($day >= "24" || $day <= "27") && $month == "12") {
-		$messages[] = "Happy Holiday! 🎄";
-	} elseif ($day >= "31" && $month == "10") {
-		$messages[] = "Happy Halloween! 🎃";	
+	foreach ($frontpageMessages as $message) {
+		if ($now->getTimestamp() >= $message->startTime->getTimestamp() &&
+			$now->getTimestamp() <= $message->endTime->getTimestamp()) {
+			$messages[] = $message->message;
+		}
 	}
 	
 	// If the messages array is empty, assign it with boolean false

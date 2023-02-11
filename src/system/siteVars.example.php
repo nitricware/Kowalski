@@ -1,6 +1,7 @@
 <?php
 	
 	use NitricWare\KowalskiContentTypes;
+	use NitricWare\KowalskiFrontpageMessages;
 	
 	/**
 	 * siteVars holds the settings.
@@ -64,3 +65,5 @@
 	}
 	
 	const GESHI_CLASSES = true;
+	
+	
