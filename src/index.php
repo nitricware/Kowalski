@@ -6,4 +6,15 @@
 		
 		For now, it just forwards to the frontpage.
 	*/
-	header("Location: frontpage.php");
+	
+	use NitricWare\KowalskiContentTypes;
+	
+	/** @var siteVars $siteVars */
+	include("./init.php");
+	
+	if ($siteVars->startPage == KowalskiContentTypes::project) {
+		header("Location: frontpage.php");
+	} else {
+		header("Location: blog.php");
+	}
+	

@@ -1,5 +1,7 @@
 <?php
 	
+	use NitricWare\KowalskiContentTypes;
+	
 	/**
 	 * siteVars holds the settings.
 	 */
@@ -44,6 +46,11 @@
 		 * @var bool
 		 */
 		public bool $linkToAdmin = true;
+		/**
+		 * Which section should be the startpage? Projects or blog?
+		 * @var KowalskiContentTypes
+		 */
+		public KowalskiContentTypes $startPage = KowalskiContentTypes::project;
 		/**
 		 * Use GeSHi's class system for highlight or color in HTML?
 		 * Set to true for classes. Requires extra CSS.
