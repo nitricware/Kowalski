@@ -20,7 +20,9 @@
 	<span id="company">{$siteVars->company}</span>
 	
 	<ul>
+		{if !$siteVars->hidePortfolio}
 		<li><a href="frontpage.php">Portfolio</a></li>
+		{endif}
 		<li><a href="blog.php">Dev-Blog</a></li>
 		{if $siteVars->github != false}
 		<li><a href="https://www.github.com/{$siteVars->github}" target="_blank">GitHub</a></li>

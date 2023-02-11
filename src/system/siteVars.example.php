@@ -52,6 +52,11 @@
 		 */
 		public KowalskiContentTypes $startPage = KowalskiContentTypes::project;
 		/**
+		 * Should the link to the portfolio page be hidden?
+		 * @var bool
+		 */
+		public bool $hidePortfolio = false;
+		/**
 		 * Use GeSHi's class system for highlight or color in HTML?
 		 * Set to true for classes. Requires extra CSS.
 		 * @var bool
