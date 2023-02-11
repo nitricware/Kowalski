@@ -7,6 +7,7 @@
 	// Started on 19 Jan 19
 	//
 	
+	use NitricWare\KowalskiContentTypes;
 	use NitricWare\KowalskiFiles;
 	use NitricWare\KowalskiPost;
 	

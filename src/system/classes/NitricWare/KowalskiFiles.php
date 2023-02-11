@@ -2,7 +2,7 @@
 	
 	namespace NitricWare;
 	
-	use KowalskiContentTypes;
+	use NitricWare\KowalskiContentTypes;
 	
 	/**
 	 * Class KowalskiFiles

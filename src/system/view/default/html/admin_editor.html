@@ -1,12 +1,13 @@
 {include ./system/view/default/html/header.html}
+{include ./system/view/default/html/admin_header.html}
 
 <h1>Editor</h1>
 <h2>{$editor->contentType}: {if $editor->fileURL}{$editor->fileURL}{else}new file{endif}</h2>
 
-<form method="post" action="admin_editor.php?action=save&amp;type={$editor->contentType}{if $editor->fileURL}&amp;file={$editor->fileURL.ignoreContext()}{endif}">
-    <label>
-        <textarea rows="20" cols="100" name="content">{if $editor->content}{$editor->content}{endif}</textarea>
-    </label>
+<form method="post" action="admin_editor.php?action=edit&amp;type={$editor->contentType}{if $editor->fileURL}&amp;file={$editor->fileURL.ignoreContext()}{endif}">
+    <input name="fileName" type="text" value="{$editor->fileName}" width="100" />.md
+    <br />
+    <textarea rows="20" cols="100" name="content">{if $editor->content}{$editor->content}{endif}</textarea>
     <br />
     <button type="submit">Save</button>
 </form>

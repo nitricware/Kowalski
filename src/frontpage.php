@@ -8,9 +8,11 @@
 	// Started on 19 Jan 19
 	//
 	
-	use NitricWare\KowalskiFiles;
+	use NitricWare\KowalskiContentTypes;
 	use NitricWare\KowalskiProject;
+	use NitricWare\KowalskiFiles;
 	use NitricWare\Tonic;
+	
 	// use NitricWare\ParseProject;
 	
 	/** @var Tonic $tpl */

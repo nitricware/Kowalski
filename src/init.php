@@ -1,20 +1,30 @@
 <?php
-	// Include the dependencies
-	use NitricWare\KowalskiFiles;
-	use NitricWare\Tonic;
+	/*
+	 * Autoloader
+	 */
 	
-	include "vendor/autoload.php";
-	// Kowalski Content Types
-	include("./system/enums/KowalskiContentTypes.php");
-	// Markdown parser
-	include("./system/classes/ParsedownExtension.php");
-	// File Parser
-	//include("./system/classes/ParseProjects.php");
-	include("./system/classes/KowalskiProject.php");
-	// Blog Post Parser
-	include("./system/classes/KowalskiPost.php");
-	// Kowalski Files
-	include("./system/classes/KowalskiFiles.php");
+	include __DIR__."/vendor/autoload.php";
+	/**
+	 * NWAutoLoad - automatically includes used classes, enums, etc.
+	 *
+	 * @param string $name is transformed into a path. Namespace\Class
+	 * becomes Namespace/Class. Class.php is expected to be located in
+	 * system/classes/Namespace/Class.php.
+	 *
+	 * @return void
+	 */
+	function NWAutoLoad (string $name): void {
+		// Resolve namespaces into directories
+		$path = str_replace("\\", "/", $name);
+		if (file_exists(__DIR__ . "/system/classes/$path.php")) {
+			include __DIR__ . "/system/classes/$path.php";
+		} elseif (file_exists(__DIR__ . "/system/enums/$path.php")) {
+			include __DIR__ . "/system/enums/$path.php";
+		}
+	}
+	
+	spl_autoload_register("NWAutoLoad");
+	
 	// Site Variables
 	include("./system/siteVars.php");
 	// Header Items Function
@@ -22,8 +32,8 @@
 	
 	$siteVars = new siteVars();
 	
-	$tpl = new Tonic();
-	$files = new KowalskiFiles();
+	$tpl = new NitricWare\Tonic();
+	$files = new NitricWare\KowalskiFiles();
 	
 	// Get the items for the header navigation bar
 	$pages = createHeaderItems();

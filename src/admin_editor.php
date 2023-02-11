@@ -6,73 +6,60 @@
 	// Started on 27 Nov 21
 	//
 	
-	use NitricWare\KowalskiFiles;
-	use NitricWare\Tonic;
-	
 	/** @var Tonic $tpl */
 	/** @var siteVars $siteVars */
 	/** @var KowalskiFiles $files */
 	include("./init.php");
+	
+	use NitricWare\KowalskiFiles;
+	use NitricWare\Tonic;
 	
 	if (!isset($_COOKIE["kowalski_admin"])) {
 		header("Location: admin_login.php");
 		exit();
 	}
 	
-	$accidentialCall = false;
-	
-	
 	class KowalskiEditorData {
 		public ?string $contentType = null;
-		public ?string $content = null;
+		public string $content = "";
 		public ?string $fileURL = null;
+		public ?string $fileName = null;
 	}
 	
 	$editor = new KowalskiEditorData();
 	
 	$tpl->load("./system/view/".$siteVars->design."/html/admin_editor.html");
 	
-	// TODO: clean up that mess...
-	
-	switch ($_GET["type"]) {
-		case "pages":
-		case "blog":
-		case "frontpage":
-			$editor->contentType = $_GET["type"];
-			break;
-		default:
-			$accidentialCall = true;
+	$editor->contentType = $_GET["type"];
+	if (isset($_GET["file"])) {
+		$editor->fileURL = $_GET["file"];
+		$editor->fileName = pathinfo($editor->fileURL)["filename"];
+	} else {
+		$time = time();
+		$editor->fileURL = "./system/content/" . $editor->contentType . "/". $time . ".md";
+		$editor->fileName = $time;
 	}
+	
+	if (isset($_POST["content"])) {
+		// save button in editor was pressed, data was sent via post
+		// saving edits
+		if ($_POST["fileName"] != $editor->fileName) {
+			// filename was changed
+			$newName = strlen(trim($_POST["fileName"])) > 0 ? trim($_POST["fileName"]) : time();
+			unlink($editor->fileURL);
+			$editor->fileURL = "./system/content/" . $editor->contentType . "/". $newName . ".md";
+			$editor->fileName = $newName;
+		}
+		file_put_contents($editor->fileURL, $_POST["content"]);
+	}
+	
 	
 	switch ($_GET["action"]) {
 		case "new":
 			break;
-		case "save":
-			if (!isset($_GET["file"])) {
-				$editor->fileURL = "./system/content/" . $editor->contentType . "/". time() . ".md";
-			} else {
-				$editor->fileURL = $_GET["file"];
-			}
-			
-			file_put_contents($editor->fileURL, $_POST["content"]);
 		case "edit":
-			if (isset($_GET["file"])) {
-				$editor->fileURL = $_GET["file"];
-			} else {
-				if (!isset($editor->fileURL)) {
-					$accidentialCall = true;
-				}
-			}
-			
 			$editor->content = file_get_contents($editor->fileURL);
-			
 			break;
-		default:
-			$accidentialCall = true;
-	}
-	
-	if ($accidentialCall) {
-		header("Location: admin.php");
 	}
 	
 	$tpl->assign("editor", $editor);
