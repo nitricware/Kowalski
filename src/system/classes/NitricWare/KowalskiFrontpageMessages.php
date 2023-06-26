@@ -14,6 +14,7 @@
 			$now = new DateTimeImmutable();
 			$nextYear = (int) $thisYear->format("Y") + 1;
 			$lastYear = (int) $thisYear->format("Y") - 1;
+			$currentDayOfYear = (int) $now->format("z");
 			
 			if ($this->endTime->getTimestamp() < $this->startTime->getTimestamp()) {
 				/*
@@ -25,12 +26,12 @@
 				 * start - now - end
 				 * 1.10    1.2   1.3    year change between start and now - move start back a year      start > now     start DoY > now DoY
 				 * 1.10    1.11  1.2    year change between now and end - move end ahead a year         now > end       now DoY > end DoY < now DoY
+				 * 1.10    1.4   1.2    year change already happened
 				 */
-				
-				$currentDayOfYear = (int) $now->format("z");
 				
 				if ((int)$this->startTime->format("z") > $currentDayOfYear) {
 					$this->startTime = new DateTimeImmutable($this->startTime->format("j. F $lastYear"));
+					return;
 				}
 				
 				if ((int)$this->endTime->format("z") < $currentDayOfYear) {
