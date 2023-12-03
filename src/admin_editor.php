@@ -45,9 +45,21 @@
 		// saving edits
 		if ($_POST["fileName"] != $editor->fileName) {
 			// filename was changed
+			// this can happen during editing and creating
+			//   - editing: file exists, rename
+			//   - creating: file does not exist yet, do nothing
 			$newName = strlen(trim($_POST["fileName"])) > 0 ? trim($_POST["fileName"]) : time();
-			unlink($editor->fileURL);
+			
+			if (file_exists($editor->fileURL)) {
+				unlink($editor->fileURL);
+			}
+			
 			$editor->fileURL = "./system/content/" . $editor->contentType . "/". $newName . ".md";
+			
+			if (file_exists($editor->fileURL)) {
+				$newName .= time();
+				$editor->fileURL = "./system/content/" . $editor->contentType . "/". $newName . ".md";
+			}
 			$editor->fileName = $newName;
 		}
 		file_put_contents($editor->fileURL, $_POST["content"]);

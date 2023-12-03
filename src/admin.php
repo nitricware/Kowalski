@@ -27,7 +27,7 @@
 	$tpl->assign("blogPosts", $adminPanel->get(KowalskiContentTypes::blog));
 	$tpl->assign("projects", $adminPanel->get(KowalskiContentTypes::project));
 	
-	$tpl->load("./system/view/".$siteVars->design."/html/admin.html");
+	$tpl->load("./system/view/".$siteVars->adminDesign."/html/admin.html");
 	
 	try {
 		echo $tpl->render();

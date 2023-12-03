@@ -8,7 +8,7 @@
 	//
 	//
 	
-	use NitricWare\NitricWare\KowalskiPost;
+	use NitricWare\KowalskiPost;
 	use NitricWare\Tonic;
 	
 	/** @var siteVars $siteVars */
