@@ -38,11 +38,6 @@
 		 */
 		public string $design = "default";
 		/**
-		 * Introduction Text
-		 * @var string
-		 */
-		public string $introText = "Describe yourself.";
-		/**
 		 * Show link to admin interface if theme supports it?
 		 * @var bool
 		 */

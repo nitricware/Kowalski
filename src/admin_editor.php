@@ -28,7 +28,7 @@
 	
 	$editor = new KowalskiEditorData();
 	
-	$tpl->load("./system/view/".$siteVars->design."/html/admin_editor.html");
+	$tpl->load("./system/view/".$siteVars->adminDesign."/html/admin_editor.html");
 	
 	$editor->contentType = $_GET["type"];
 	if (isset($_GET["file"])) {

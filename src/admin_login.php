@@ -13,6 +13,6 @@
 		}
 	}
 	
-	$tpl->load("./system/view/".$siteVars->design."/html/admin_login.html");
+	$tpl->load("./system/view/".$siteVars->adminDesign."/html/admin_login.html");
 	
 	echo $tpl->render();

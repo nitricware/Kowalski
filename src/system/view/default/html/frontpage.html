@@ -1,6 +1,6 @@
 {include ./system/view/default/html/header.html}
 
-<p><em>{$siteVars->introText}</em></p>
+<p>{$headerText.ignoreContext()}</p>
 {if $projects}
 	{loop $project in $projects}
 		{if $project->iconPath}
@@ -19,5 +19,7 @@
 	<h2>No projects yet</h2>
 	<p>It seems as if {$siteVars->company} did not post any posts yet.</p>
 {endif}
+
+<p>{$footerText.ignoreContext()}</p>
 
 {include ./system/view/default/html/footer.html}

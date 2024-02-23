@@ -9,6 +9,8 @@
 	//
 	
 	use NitricWare\KowalskiContentTypes;
+	use NitricWare\KowalskiFrontpageTextblock;
+	use NitricWare\KowalskiFrontpageTextblockType;
 	use NitricWare\KowalskiProject;
 	use NitricWare\KowalskiFiles;
 	use NitricWare\Tonic;
@@ -34,6 +36,12 @@
 	$projects = [];
 	
 	foreach ($projectsFiles as $projectFile) {
+		if (strpos($projectFile, "header.md")) {
+			break;
+		}
+		if (strpos($projectFile, "footer.md")) {
+			break;
+		}
 		try {
 			$projects[] = new KowalskiProject($projectFile);
 		} catch (Exception $e) {
@@ -46,6 +54,38 @@
 	}
 	
 	$tpl->assign("projects", $projects);
+	
+	/**
+	 * The header and the footer message can be edited
+	 * by changing (or deleting) header.md and footer.md
+	 * in `content/frontpage/`.
+	 */
+	
+	// Create an array holding the blog post (or false if the file does not exist)
+	try {
+		$frontpageHeader = new KowalskiFrontpageTextblock(KowalskiFrontpageTextblockType::header);
+		$md = new KowalskiSyntaxMarkdown();
+		$md->setSafeMode(false);
+		$md->setMarkupEscaped(false);
+		$tpl->assign(
+			"headerText", $md->text($frontpageHeader->text)
+		);
+	} catch (Exception $e) {
+		$tpl->assign("headerText", false);
+	}
+	
+	// Create an array holding the blog post (or false if the file does not exist)
+	try {
+		$frontpageFooter = new KowalskiFrontpageTextblock(KowalskiFrontpageTextblockType::footer);
+		$md = new KowalskiSyntaxMarkdown();
+		$md->setSafeMode(false);
+		$md->setMarkupEscaped(false);
+		$tpl->assign(
+			"footerText", $md->text($frontpageFooter->text)
+		);
+	} catch (Exception $e) {
+		$tpl->assign("footerText", false);
+	}
 	
 	// Render the template
 	try {

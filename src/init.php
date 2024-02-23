@@ -5,6 +5,8 @@
 	
 	use NitricWare\KowalskiFrontpageMessages;
 	
+	const __BASE_DIR__ = __DIR__;
+	
 	include __DIR__."/vendor/autoload.php";
 	/**
 	 * NWAutoLoad - automatically includes used classes, enums, etc.
