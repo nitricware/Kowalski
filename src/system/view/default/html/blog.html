@@ -2,6 +2,14 @@
 
 <h1>Blog</h1>
 
+{if $stickyPosts != false}
+	{loop $stickyPost in $stickyPosts}
+		<h2><a href="blogpost.php?id={$stickyPost.id}">[!] {$stickyPost.title}</a></h2>
+		<span>{$stickyPost.date}</span>
+		<p>{$stickyPost.stub.ignoreContext()} <a href="blogpost.php?id={$stickyPost.id}">Read more...</a></p>
+	{endloop}
+{endif}
+
 {if $posts != false}
 	{loop $post in $posts}
 		<h2><a href="blogpost.php?id={$post.id}">{$post.title}</a></h2>

@@ -9,6 +9,10 @@
     <input name="fileName" type="text" value="{$editor->fileName}" width="100" />.md
     <br />
     {endif}
+    {if $editor->contentType == "blog"}
+    <input type="checkbox" name="isSticky" value="isSticky" {if $editor->isSticky}CHECKED{endif}/> Sticky
+    <br />
+    {endif}
     <textarea rows="20" cols="100" name="content">{if $editor->content}{$editor->content}{endif}</textarea>
     <br />
     <button type="submit">Save</button>

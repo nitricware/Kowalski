@@ -21,6 +21,8 @@
 	// Get all projects for the frontpage
 	$blogDir = "./system/content/blog/";	
 	$blogFiles = array_reverse(scandir($blogDir));
+	$posts = [];
+	$stickyPosts = [];
 	
 	if (count($blogFiles) > 2) {
 		foreach($blogFiles as $project) {
@@ -33,10 +35,14 @@
 						"title" => $pp->getPostTitle(),
 						"stub" => substr($md->text($pp->getPostStub()),3,-4),
 						"date" => $pp->getPostDate(),
-						"id" => $pp->getID()
+						"id" => $pp->getID(),
+						"isSticky" => $pp->getSticky()
 					];
-					
-					$posts[] = $post;
+					if ($post["isSticky"]) {
+						$stickyPosts[] = $post;
+					} else {
+						$posts[] = $post;
+					}
 				} catch (Exception $e) {
 					trigger_error("Post does not exist anymore", E_USER_NOTICE);
 				}
@@ -44,7 +50,14 @@
 		}
 	} else {
 		$posts = false;
+		$stickyPosts = false;
 	}
+	
+	if (count($stickyPosts) < 1) {
+		$stickyPosts = false;
+	}
+	
+	$tpl->assign("stickyPosts", $stickyPosts);
 	$tpl->assign("posts", $posts);
 	
 	// Render the template

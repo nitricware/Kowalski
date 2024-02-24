@@ -59,8 +59,9 @@
 		 * @return string
 		 */
 		function getPostStub(): string {
-			$firstLineBreak = strpos($this->file, "\n") + 2;
+			$firstLineBreak = strpos($this->file, "\n") + 3;
 			$secondLineBreak = strpos($this->file, "\n", $firstLineBreak);
+			
 			return substr($this->file, $firstLineBreak, $secondLineBreak - $firstLineBreak);
 		}
 		
@@ -73,7 +74,13 @@
 		 * @return false|string
 		 */
 		function getPostDate(): bool|string {
-			$t = pathinfo($this->path)["filename"];
+			/*
+			 * Filename could contain underscores ("_hidden", "_sticky").
+			 * If it does, anything uo until the first underscore is
+			 * considered the date of the post.
+			 */
+			$u = strpos(pathinfo($this->path)["filename"], "_");
+			$t = substr(pathinfo($this->path)["filename"],0, $u ? $u : null);
 			return date("d.m.Y", $t);
 		}
 		
@@ -84,5 +91,9 @@
 		 */
 		function getID(): string {
 			return pathinfo($this->path)["filename"];
+		}
+		
+		function getSticky(): bool {
+			return (bool) strpos(pathinfo($this->path)["filename"], "_sticky");
 		}
 	}
